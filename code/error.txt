@@ -1,0 +1,2 @@
+invalid start page
+usage: [-s start_page page(>=1)] [-e end_page page(>=s)] [-l length of page(default 72)] [-f type of file(default 1)] [-d dest] [filename specify input file]
