@@ -40,29 +40,37 @@
 ![此处输入图片的描述][5]
 
 
-4、`./selpg -s1 -e2 test.txt 2>error.txt`
-selpg 将第 1 页到第 2 页写至标准输出（屏幕）；所有的错误消息被 shell／内核重定向至“error.txt”。
+4、`./selpg -s1 test.txt 2>error.txt`
+selpg 将第 1 页到第 2 页写至标准输出（屏幕）；所有的错误消息被 shell／内核重定向至“error.txt”。该命令是错误的形式，故意让他报错。
+![此处输入图片的描述][6]
+
 
 5、 `./selpg -s1 -e2 test.txt >output.txt 2>error.txt`
 selpg 将第 1 页到第 2 页写至标准输出，标准输出被重定向至“output.txt”；selpg 写至标准错误的所有内容都被重定向至“error.txt”
+![此处输入图片的描述][7]
 
 6、 ```./selpg -s1 -e1 test.txt >output.txt 2>/dev/null```
 selpg 将第 1 页写至标准输出，标准输出被重定向至“output.txt”；selpg 写至标准错误的所有内容都被重定向至 /dev/null（空设备），这意味着错误消息被丢弃了。设备文件 /dev/null 废弃所有写至它的输出，当从该设备文件读取时，会立即返回 EOF。
 
 7、 ``` ./selpg -s1 -e1 test.txt | wc```
 selpg 的标准输出透明地被 shell／内核重定向，成为“other_command”的标准输入，第 1 页被写至该标准输入。“other_command”的示例可以是 lp，它使输出在系统缺省打印机上打印。“other_command”的示例也可以 wc，它会显示选定范围的页中包含的行数、字数和字符数。“other_command”可以是任何其它能从其标准输入读取的命令。错误消息仍在屏幕显示。
+![此处输入图片的描述][8]
+
+
 
 8、 ```./selpg -s2 -e1 input.txt 2>error.txt | wc```
 与上面的示例 7 相似，只有一点不同：错误消息被写至“error_file”
 
 9、 ```./selpg -s1 -e2 -l4 test.txt```
 该命令将页长设置为 4 行，这样 selpg 就可以把输入当作被定界为该长度的页那样处理。第 1-2 页被写至 selpg 的标准输出（屏幕）。
+![此处输入图片的描述][9]
 
 10、 ```./selpg -s1 -e2 -f test.txt```
 假定页由换页符定界。第 1-2 页被写至 selpg 的标准输出（屏幕）。
-
+![此处输入图片的描述][10]
 11、 ```./selpg -s1 -e2 -dlp1 test.txt```
-第 1 页到第 2 页由管道输送至命令“lp -dlp1”，该命令将使输出在打印机 lp1 上打印。然后因为没有打印机，该命令运行时被内部替换为cat -n。试验结果见images里面的效果图。
+第 1 页到第 2 页由管道输送至命令“lp -dlp1”，该命令将使输出在打印机 lp1 上打印。然后因为没有打印机，该命令运行时被内部替换为cat -n。
+![此处输入图片的描述][11]
 
 --------
 
@@ -72,3 +80,9 @@ selpg 的标准输出透明地被 shell／内核重定向，成为“other_command”的标准输入，第 
   [3]: /images/QQ%E6%88%AA%E5%9B%BE20181011154541.png
   [4]: /images/QQ%E6%88%AA%E5%9B%BE20181011154623.png
   [5]: /images/QQ%E6%88%AA%E5%9B%BE20181011154716.png
+  [6]: /images/QQ%E6%88%AA%E5%9B%BE20181011154824.png
+  [7]: /images/QQ%E6%88%AA%E5%9B%BE20181011154927.png
+  [8]: /images/QQ%E6%88%AA%E5%9B%BE20181011155134.png
+  [9]: /images/QQ%E6%88%AA%E5%9B%BE20181011155207.png
+  [10]: /images/QQ%E6%88%AA%E5%9B%BE20181011155226.png
+  [11]: /images/QQ%E6%88%AA%E5%9B%BE20181011155257.png
