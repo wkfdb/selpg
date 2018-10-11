@@ -54,6 +54,8 @@ selpg ½«µÚ 1 Ò³Ð´ÖÁ±ê×¼Êä³ö£¬±ê×¼Êä³ö±»ÖØ¶¨ÏòÖÁ¡°output.txt¡±£»selpg Ð´ÖÁ±ê×¼´íÎ
 
 7¡¢ ``` ./selpg -s1 -e1 test.txt | wc```
 selpg µÄ±ê×¼Êä³öÍ¸Ã÷µØ±» shell£¯ÄÚºËÖØ¶¨Ïò£¬³ÉÎª¡°other_command¡±µÄ±ê×¼ÊäÈë£¬µÚ 1 Ò³±»Ð´ÖÁ¸Ã±ê×¼ÊäÈë¡£¡°other_command¡±µÄÊ¾Àý¿ÉÒÔÊÇ lp£¬ËüÊ¹Êä³öÔÚÏµÍ³È±Ê¡´òÓ¡»úÉÏ´òÓ¡¡£¡°other_command¡±µÄÊ¾ÀýÒ²¿ÉÒÔ wc£¬Ëü»áÏÔÊ¾Ñ¡¶¨·¶Î§µÄÒ³ÖÐ°üº¬µÄÐÐÊý¡¢×ÖÊýºÍ×Ö·ûÊý¡£¡°other_command¡±¿ÉÒÔÊÇÈÎºÎÆäËüÄÜ´ÓÆä±ê×¼ÊäÈë¶ÁÈ¡µÄÃüÁî¡£´íÎóÏûÏ¢ÈÔÔÚÆÁÄ»ÏÔÊ¾¡£
+
+
 ![´Ë´¦ÊäÈëÍ¼Æ¬µÄÃèÊö][8]
 
 
@@ -63,13 +65,22 @@ selpg µÄ±ê×¼Êä³öÍ¸Ã÷µØ±» shell£¯ÄÚºËÖØ¶¨Ïò£¬³ÉÎª¡°other_command¡±µÄ±ê×¼ÊäÈë£¬µÚ 
 
 9¡¢ ```./selpg -s1 -e2 -l4 test.txt```
 ¸ÃÃüÁî½«Ò³³¤ÉèÖÃÎª 4 ÐÐ£¬ÕâÑù selpg ¾Í¿ÉÒÔ°ÑÊäÈëµ±×÷±»¶¨½çÎª¸Ã³¤¶ÈµÄÒ³ÄÇÑù´¦Àí¡£µÚ 1-2 Ò³±»Ð´ÖÁ selpg µÄ±ê×¼Êä³ö£¨ÆÁÄ»£©¡£
+
+
 ![´Ë´¦ÊäÈëÍ¼Æ¬µÄÃèÊö][9]
+
+
 
 10¡¢ ```./selpg -s1 -e2 -f test.txt```
 ¼Ù¶¨Ò³ÓÉ»»Ò³·û¶¨½ç¡£µÚ 1-2 Ò³±»Ð´ÖÁ selpg µÄ±ê×¼Êä³ö£¨ÆÁÄ»£©¡£
+
 ![´Ë´¦ÊäÈëÍ¼Æ¬µÄÃèÊö][10]
+
+
 11¡¢ ```./selpg -s1 -e2 -dlp1 test.txt```
 µÚ 1 Ò³µ½µÚ 2 Ò³ÓÉ¹ÜµÀÊäËÍÖÁÃüÁî¡°lp -dlp1¡±£¬¸ÃÃüÁî½«Ê¹Êä³öÔÚ´òÓ¡»ú lp1 ÉÏ´òÓ¡¡£È»ºóÒòÎªÃ»ÓÐ´òÓ¡»ú£¬¸ÃÃüÁîÔËÐÐÊ±±»ÄÚ²¿Ìæ»»Îªcat -n¡£
+
+
 ![´Ë´¦ÊäÈëÍ¼Æ¬µÄÃèÊö][11]
 
 --------
