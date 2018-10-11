@@ -1,13 +1,15 @@
 package main
 
 import (
-	"flag"
+	"github.com/spf13/pflag"
 	"fmt"
 	"io"
 	"os"
 	"bufio"
 	"os/exec"
 )
+
+//import flag "github.com/ogier/pflag"
 
 type selpg_args struct {
 	s_page int
@@ -31,55 +33,55 @@ func main() {
 }
 
 func Init(args *selpg_args) {
-	flag.IntVar(&args.s_page, "s", -1, "start_page.")
-	flag.IntVar(&args.e_page, "e", -1, "end_page.")
-	flag.IntVar(&args.len_page, "l", default_len, "Lines per page.")
-	flag.BoolVar(&args.page_type, "f", false, "Page type")
+	pflag.IntVarP(&args.s_page,"start_page", "s", -1, "start_page.")
+	pflag.IntVarP(&args.e_page,"end_page", "e", -1, "end_page.")
+	pflag.IntVarP(&args.len_page,"Lines_pre_page", "l", default_len, "Lines per page.")
+	pflag.BoolVarP(&args.page_type,"page_type", "f", false, "Page type")
 	//-f 表示使用换页符来决定一页多大，-f与-l是互斥的
-	flag.StringVar(&args.dest, "d", "", "Print destination")
-    flag.Usage = Usage
-	flag.Parse()
+	pflag.StringVarP(&args.dest,"Print_destination", "d", "", "Print destination")
+    pflag.Usage = Usage
+	pflag.Parse()
 }
 
 func Check_error(args *selpg_args) {
 
 	if args.s_page == -1 || args.e_page == -1 {
 		os.Stderr.Write([]byte("Must input -s -e\n"))
-    	flag.Usage()
+    	pflag.Usage()
 		os.Exit(0)
 	}
 	if args.s_page < 1 {
 		fmt.Fprintf(os.Stderr,"invalid start page\n")
-    	flag.Usage()
+    	pflag.Usage()
     	os.Exit(1)
 	}
 	
 	if 	args.e_page < 1 {
 		fmt.Fprintf(os.Stderr,"invalid end page\n")
-    	flag.Usage()
+    	pflag.Usage()
     	os.Exit(2)
 	}
 
 	if args.len_page < 1 {
 		fmt.Fprintf(os.Stderr,"invalid page len\n")
-    	flag.Usage()
+    	pflag.Usage()
     	os.Exit(3)
 	}
 	if args.s_page > args.e_page {
     	fmt.Fprintf(os.Stderr,"start page larger than end page\n")
-    	flag.Usage()
+    	pflag.Usage()
     	os.Exit(4)
   	}
 
  	if args.len_page != default_len && args.page_type {
     	fmt.Fprintf(os.Stderr,"%s:-f and -l can not input together\n",program_name)
-		flag.Usage()
+		pflag.Usage()
 		os.Exit(5)
 	}
 
- 	if len(flag.Args()) > 1 {
+ 	if len(pflag.Args()) > 1 {
     	fmt.Fprintf(os.Stderr,"%s:too much args\n",program_name)
-    	flag.Usage()
+    	pflag.Usage()
     	os.Exit(6)
   	}
 
@@ -103,8 +105,8 @@ func Readfile(args *selpg_args) {
 	}
 
 	//如果有输入文件名就读取文件
-    if flag.NArg() > 0 {
-	    args.filename = flag.Arg(0)
+    if pflag.NArg() > 0 {
+	    args.filename = pflag.Arg(0)
 	    input,err := os.Open(args.filename)
 
 	    if err != nil {
